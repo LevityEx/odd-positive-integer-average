@@ -6,13 +6,9 @@ import { averageOddPositiveIntegers, isAllIntegers } from "./util";
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
-
 app.post("/odd-positive-average", (req, res, next) => {
   let { input } = req.body;
-  if (input.length < 1) {
+  if (input && input.length < 1) {
     res.status(400).json({ message: "Must contain inputs" });
     return;
   }
